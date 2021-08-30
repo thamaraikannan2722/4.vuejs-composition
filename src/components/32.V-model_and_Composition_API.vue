@@ -1,0 +1,49 @@
+<template>
+  <div>
+    <input type="text" placeholder="First Name" v-model="fname" />
+    <input type="text" placeholder="Last Name" v-model="lname" />
+
+    <input type="text" placeholder="Hero Name" v-model="heroName" />
+    <input type="text" placeholder="First Name" v-model="firstName" />
+    <input type="text" placeholder="Last Name" v-model="lastName" />
+  </div>
+</template>
+
+<script>
+//56.v-model and Composition API -
+
+import { ref, reactive, toRefs } from "vue";
+
+export default {
+  name: "VModel",
+  setup() {
+    const heroName = ref('');
+    const state = reactive({
+      firstName: '',
+      lastName: '',
+    });
+
+    return {
+      heroName,
+      ...toRefs(state),
+    };
+  },
+  data() {
+    return {
+      fname: '',
+      lname: '',
+    };
+  },
+};
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
